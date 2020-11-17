@@ -15,10 +15,6 @@ else:
     with open('spamer.txt', 'w') as a:
         a.write(api_id + '\n' + api_hash)
 
-# Use your own values from my.telegram.org
-# api_id = int(input("enter your app id: "))
-# api_hash = input("enter your app hash: ")
-
 client = TelegramClient('spamer', api_id, api_hash)
 
 
