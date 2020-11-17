@@ -10,8 +10,8 @@ client = TelegramClient('spamer', api_id=api_id, api_hash=api_hash)
 
 
 async def main():
-    global destination, target
-    print('Here are your opened chat:')
+    global target
+    print('Here are your chats:')
 
     i = 0
     dialogs = await client.get_dialogs()
@@ -22,18 +22,18 @@ async def main():
     confirm = False
     max = len(dialogs) - 1
 
-    while (confirm == False):
-        destination_index = -1
+    while confirm == False:
+        target_index = -1
 
-        # Get destination chat
-        while destination_index < 0 or destination_index > max:
-            print('Please insert destination between 0 and', max)
-            destination_index = int(input())
-            if destination_index < 0 | destination_index > max:
-                print('Destination out of range')
+        # Get target chat
+        while target_index < 0 or target_index > max:
+            print('Please insert target between 0 and', max)
+            target_index = int(input())
+            if target_index < 0 | target_index > max:
+                print('target out of range')
 
-        destination = dialogs[destination_index]
-        print('Destination is', destination.name, 'with ID', destination.id)
+        target = dialogs[target_index]
+        print('target is', target.name, 'with ID', target.id)
 
         # Wait for confirm
         print('Correct? Y/N')
@@ -44,15 +44,16 @@ async def main():
     message = input("Enter the message to send here: ")
     treads = int(input("How many messages do you want to send?\n"))
 
-    print("If you made some mistake with destination, this is the last time you can Ctrl-Z")
-    print('Start spaming in 5 sec...')
-    time.sleep(5)
+    print("If you made some mistake with target, this is the last time you can Ctrl-Z")
+    print('Start spaming in 3 sec...')
+    time.sleep(3)
+    print("[+] The spam started")
     try:
         for i in range(int(treads)):
-            await client.send_message(destination.id, message)
+            await client.send_message(target.id, message)
         print("[+] spam successful")
     except FloodWaitError:
-        print("stoping...")
+        print("stoping... try after on Hour")
 
 
 with client:
