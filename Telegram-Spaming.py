@@ -1,7 +1,7 @@
 from telethon import TelegramClient
-from telethon.errors import FloodWaitError
-import os
+from telethon.errors import rpcerrorlist, FloodWaitError
 import time
+import os
 
 if os.path.isfile('spamer.txt'):
     with open('spamer.txt', 'r') as r:
@@ -65,8 +65,10 @@ async def main():
         for i in range(int(treads)):
             await client.send_message(target.id, message)
         print("[+] spam successful")
+    except rpcerrorlist.ChatAdminRequiredError:
+        print("[!] You do not have permission to post messages in this chat!")
     except FloodWaitError:
-        print("stoping... try after on Hour")
+        print("[!] try again after one hour")
 
 
 with client:
