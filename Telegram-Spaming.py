@@ -1,12 +1,25 @@
 from telethon import TelegramClient
 from telethon.errors import FloodWaitError
+import os
 import time
 
-# Use your own values from my.telegram.org
-api_id = int(input("enter your app id: "))
-api_hash = input("enter your app hash: ")
+if os.path.isfile('spamer.txt'):
+    with open('spamer.txt', 'r') as r:
+        data = r.readlines()
+    api_id = int(data[0])
+    api_hash = data[1]
 
-client = TelegramClient('spamer', api_id=api_id, api_hash=api_hash)
+else:
+    api_id = input('Enter api_id: ')
+    api_hash = input('Enter api_hash: ')
+    with open('spamer.txt', 'w') as a:
+        a.write(api_id + '\n' + api_hash)
+
+# Use your own values from my.telegram.org
+# api_id = int(input("enter your app id: "))
+# api_hash = input("enter your app hash: ")
+
+client = TelegramClient('spamer', api_id, api_hash)
 
 
 async def main():
