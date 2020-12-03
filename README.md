@@ -19,4 +19,4 @@ python3 Telegram-Spaming.py
 fill app id and app hash, end sign-in to your  account.
 now start to spam
 
-Errors or questions you can ask me here: [Telegram](https://t.me/Successfully_deleted) and [Email](mailto:sslwm2362@gmail.com)
+Errors or questions you can ask me here: [Telegram](https://t.me/Successfully_deleted)
