@@ -3,6 +3,7 @@ from telethon.errors import rpcerrorlist, FloodWaitError
 import time
 import os
 
+
 if os.path.isfile('spamer.txt'):
     with open('spamer.txt', 'r') as r:
         data = r.readlines()
@@ -19,9 +20,21 @@ client = TelegramClient('spamer', api_id, api_hash)
 
 
 async def main():
-    global target
-    print('Here are your chats:')
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
 
+    global target
+    print(''' _____    _      _____                       
+|_   _|  | |    /  ___|                      
+  | | ___| | ___\ `--. _ __   __ _ _ __ ___  
+  | |/ _ \ |/ _ \`--. \ '_ \ / _` | '_ ` _ \ 
+  | |  __/ |  __/\__/ / |_) | (_| | | | | | |
+  \_/\___|_|\___\____/| .__/ \__,_|_| |_| |_|
+                      | |                    
+                      |_| by Deleted-accounts''')
+    print('\n\nhere is your chats, Please choose a target...')
     i = 0
     dialogs = await client.get_dialogs()
     for dialog in dialogs:
