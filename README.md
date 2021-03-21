@@ -1,4 +1,4 @@
-# Telegram-Spaming🤡
+# TeleSpam🤡
 
 ### added simpale progressbar ⏱
 
