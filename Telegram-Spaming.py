@@ -1,5 +1,6 @@
 from telethon import TelegramClient
 from telethon.errors import rpcerrorlist, FloodWaitError
+import progressbar
 import time
 import os
 
@@ -64,15 +65,21 @@ async def main():
             confirm = True
 
     message = input("Enter the message to send here: ")
-    treads = int(input("How many messages do you want to send?\n"))
+    Several = int(input("How many messages do you want to send?\n"))
 
     print("If you made some mistake with target, this is the last time you can Ctrl-Z")
     print('Start spaming in 3 sec...')
     time.sleep(3)
     print("[+] The spam started")
+    bar = progressbar.ProgressBar(
+        widgets=[progressbar.SimpleProgress()],
+        max_value=Several,
+    ).start()
     try:
-        for i in range(int(treads)):
+        for i in range(int(Several)):
             await client.send_message(target.id, message)
+            bar.update(i + 1)
+        bar.finish()
         print("[+] spam successful")
     except rpcerrorlist.ChatAdminRequiredError:
         print("[!] You do not have permission to post messages in this chat!")
