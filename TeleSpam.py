@@ -1,5 +1,5 @@
 from telethon import TelegramClient
-from telethon.errors import rpcerrorlist, FloodWaitError
+from telethon.errors import rpcerrorlist, FloodWaitError, ChatWriteForbiddenError
 import progressbar
 import time
 import os
@@ -83,6 +83,8 @@ async def main():
         print("[+] spam successful")
     except rpcerrorlist.ChatAdminRequiredError:
         print("[!] You do not have permission to post messages in this chat!")
+    except ChatWriteForbiddenError:
+        print("[!] You have been restricted to writing messages in this chat...!")
     except FloodWaitError:
         print("[!] try again after one hour")
 
