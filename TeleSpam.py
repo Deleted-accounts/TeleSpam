@@ -4,7 +4,7 @@ import time
 import os
 try:
     import progressbar
-except Exception:
+except ModuleNotFoundError:
     print("please run > pip install progressbar2") 
 
 
