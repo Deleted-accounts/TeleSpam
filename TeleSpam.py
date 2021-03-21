@@ -1,8 +1,11 @@
 from telethon import TelegramClient
 from telethon.errors import rpcerrorlist, FloodWaitError, ChatWriteForbiddenError
-import progressbar
 import time
 import os
+try:
+    import progressbar
+except Exception:
+    print("please run > pip install progressbar2") 
 
 
 if os.path.isfile('spamer.txt'):
