@@ -1,5 +1,7 @@
 # TeleSpam🤡
 
+# Telegram-Spam
+
 ### added simpale progressbar ⏱
 
 ## just run:
